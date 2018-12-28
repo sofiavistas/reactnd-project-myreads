@@ -6,7 +6,7 @@ class BookShelves extends Component {
   render() {
     const { allBooks } = this.props;
 
-    return(
+    return (
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
@@ -22,9 +22,8 @@ class BookShelves extends Component {
           <Link to="/search">Add a book</Link>
         </div>
       </div>
-    );
+    )
   }
-
 }
 
 export default BookShelves;
