@@ -3,11 +3,14 @@ import * as BooksAPI from './BooksAPI';
 
 class BookItem extends Component {
   state = {
-    shelf: 'none',
+    shelf: "none",
   }
 
   updateShelf = (book, event) => {
-    BooksAPI.update(book, event.target.value);
+    if(event.target.value !== "none") {
+      BooksAPI.update(book, event.target.value);
+    }
+
     this.setState({
       shelf: event.target.value,
     });
@@ -21,7 +24,7 @@ class BookItem extends Component {
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
           <div className="book-shelf-changer">
-            <select onChange={(event) => this.updateShelf(book, event)} value={this.state.shelf || book.shelf}>
+            <select onChange={(event) => this.updateShelf(book, event)} value={ book.shelf || this.state.shelf} >
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
