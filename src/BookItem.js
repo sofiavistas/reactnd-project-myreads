@@ -7,9 +7,8 @@ class BookItem extends Component {
   }
 
   updateShelf = (book, event) => {
-    if(event.target.value !== "none") {
-      BooksAPI.update(book, event.target.value);
-    }
+
+    BooksAPI.update(book, event.target.value);
 
     this.setState({
       shelf: event.target.value,
