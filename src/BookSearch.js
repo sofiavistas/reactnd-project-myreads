@@ -30,6 +30,13 @@ class BookSearch extends Component {
 
     render() {
       const { searchTerm, books } = this.state;
+      const { myBooks } = this.props;
+
+      let myBooksMap = new Map(myBooks.map( book => [book.id, book]))
+      let displayBooks;
+      if (books) {
+        displayBooks = books.map((book) => myBooksMap.has(book.id)? myBooksMap.get(book.id) : book);
+      }
 
       return (
         <div className="search-books">
@@ -48,8 +55,8 @@ class BookSearch extends Component {
           </div>
           <div className="search-books-results">
             <ol className="books-grid">
-              {books.length > 0 &&
-                books.map((book) =>(
+              {displayBooks.length > 0 &&
+                displayBooks.map((book) =>(
                   <li key={book.id}>
                     <BookItem book={book} />
                   </li>
