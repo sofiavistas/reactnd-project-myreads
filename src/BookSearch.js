@@ -33,8 +33,8 @@ class BookSearch extends Component {
       const { myBooks } = this.props;
 
       let myBooksMap = new Map(myBooks.map( book => [book.id, book]))
-      let displayBooks;
-      if (books) {
+      let displayBooks = [];
+      if (books.length) {
         displayBooks = books.map((book) => myBooksMap.has(book.id)? myBooksMap.get(book.id) : book);
       }
 
